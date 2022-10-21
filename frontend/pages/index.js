@@ -3,7 +3,7 @@ import Web3Modal from "web3modal";
 import { providers, Contract } from "ethers";
 import { useEffect, useRef, useState } from "react";
 import { WHITELIST_CONTRACT_ADDRESS, abi } from "../pages/constants";
-//import "../styles/Home.module.css"
+import "../styles/Home.module.css"
 export default function Home() {
 
 const [walletConnected, setWalletConnected] = useState(false);
@@ -55,6 +55,7 @@ const addAddressToWhitelist = async () => {
     await tx.wait();
     setLoading(false);
     await getNumberOfWhitelisted();
+    await returnAllWhitelistedAddressses();
     setJoinedWhitelist(true);
   } catch (err) {
     console.error(err);
@@ -167,22 +168,23 @@ return (
     </Head>
     <div>
       <div>
-        <h1>Welcome to CeloWhitelist!</h1>
+        <h1>Welcome to myWhitelist!</h1>
         <div>
-          This is only for people intersted in getting celo token. it is of limited supply
+          This is only for people intersted in getting My token. it is of limited supply
         </div>
         <div>
           {numberOfWhitelisted} have already been Whitelisted
         </div>
         <div>
-        {numberOfWhitelisted == 0 ? (
+        {numberOfWhitelisted == 0 ? (  
           <p>No whitelisted addresses yet</p>
         ) :(
           addressOfWhitelisted?.map((addr, index) => {
+            console.log("address of whitelisted", addressOfWhitelisted);
             return(
-              <tr key={index}>
-                <td>{`${addr.address}`}</td>
-              </tr>
+              <ul key={index}>
+                <li>{`${addr}`}</li>
+              </ul>
             );
           })
         )}
@@ -193,8 +195,9 @@ return (
       </div>
     </div>
     <footer>
-      Made with &#10084; by BlackAdam
+      Made with &#10084; by  <a href="https://github.com/Ultra-Tech-code">BlackAdam</a>
     </footer>
+   
   </div>
 );
 }
