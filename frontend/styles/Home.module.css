@@ -127,3 +127,40 @@
     filter: invert(1);
   }
 }
+
+/*****************Added styles***************/
+.header{
+  text-align: center;
+}
+.paragraph{
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.numofadd{
+  color:darkred;
+  font-size: larger;
+  padding: 6px;
+}
+.numContainer{
+  padding: 40px;
+  font-size: 20px;
+  font-weight: bolder;
+}
+.love{
+  color: darkred;
+  font-size: 20px;
+}
+.join{
+  background-color : darkblue;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin: 10px; 
+  
+}
+.join:hover{
+  background-color : rgb(1, 1, 82);
+
+}
