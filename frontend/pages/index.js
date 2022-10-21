@@ -2,7 +2,8 @@ import Head from "next/head";
 import Web3Modal from "web3modal";
 import { providers, Contract } from "ethers";
 import { useEffect, useRef, useState } from "react";
-import { WHITELIST_CONTRACT_ADDRESS, abi } from "../constants";
+import { WHITELIST_CONTRACT_ADDRESS, abi } from "../pages/constants";
+//import "../styles/Home.module.css"
 export default function Home() {
 
 const [walletConnected, setWalletConnected] = useState(false);
@@ -12,13 +13,27 @@ const [numberOfWhitelisted, setNumberOfWhitelisted] = useState(0);
 const [addressOfWhitelisted, setAddressOfwhitelisted] = useState([]);
 const web3ModalRef = useRef();
 
+// const styles = {
+//   button = {
+//     padding: 2rem 0;
+//     border-top: 1px solid #eaeaea;
+//     cursor: pointer;
+//   }
+
+// }
+const styles = {
+  button: {
+    padding: 2,
+  },
+};
+
 const getProviderOrSigner = async (needSigner = false) => {
   const provider = await web3ModalRef.current.connect();
   const web3Provider = new providers.Web3Provider(provider);
   const { chainId } = await web3Provider.getNetwork();
-  if (chainId !== 4) {
-    window.alert("Change the network to Rinkeby");
-    throw new Error("Change network to Rinkeby");
+  if (chainId !== 5) {
+    window.alert("Change the network to Goerli");
+    throw new Error("Change network to Goerli");
   }
   if (needSigner) {
     const signer = web3Provider.getSigner();
