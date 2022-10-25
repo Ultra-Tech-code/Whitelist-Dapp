@@ -3,16 +3,28 @@ import Web3Modal from "web3modal";
 import { providers, Contract } from "ethers";
 import { useEffect, useState } from "react";
 import { useRef } from "react";
-import { Whitelist_Address, abi } from "../pages/constants";
+import abi from "../pages/constants/contract-abi.json"
 import style from "../styles/Home.module.css"
-export default function Home() {
 
+export default function Home() {
 const [walletConnected, setWalletConnected] = useState(false);
 const [joinedWhitelist, setJoinedWhitelist] = useState(false);
 const [loading, setLoading] = useState(false);
 const [numberOfWhitelisted, setNumberOfWhitelisted] = useState(0);
 const [addressOfWhitelisted, setAddressOfwhitelisted] = useState([]);
 const web3ModalRef = useRef();
+
+const Whitelist_Address = "0x33Ba6F58577f051Dc7B02afF0bFDDb4f3c4bCE9A";
+
+
+// const style = {
+//   button = {
+//     padding: 2rem 0;
+//     border-top: 1px solid #eaeaea;
+//     cursor: pointer;
+//   }
+
+// }
 
 //setting providers or signers and setting network
 //goerli chainID = 5
